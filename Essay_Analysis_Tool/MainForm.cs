@@ -10,18 +10,20 @@
 //
 //  Copyright (C) Zachary Pedigo, 2019.
 
+using System.Globalization;
+using System.Threading;
+using Essay_Analysis_Tool.Properties;
+using FarsiLibrary.Win;
+using FastColoredTextBoxNS;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
 namespace Essay_Analysis_Tool
 {
-    using Essay_Analysis_Tool.Properties;
-    using FarsiLibrary.Win;
-    using FastColoredTextBoxNS;
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.IO;
-    using System.Text.RegularExpressions;
-    using System.Windows.Forms;
-
     /// <summary>
     /// Defines the <see cref="MainForm" />
     /// </summary>
@@ -125,6 +127,7 @@ namespace Essay_Analysis_Tool
         /// </summary>
         public MainForm()
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             InitializeComponent();
 
             logger.Log("Form Initialized!", LoggerMessageType.Info);
@@ -833,6 +836,16 @@ namespace Essay_Analysis_Tool
         private void LoggerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             logger.Show();
+        }
+
+        private void EnglishStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+        }
+
+        private void HungarianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("hu-HU");
         }
 
         #endregion
